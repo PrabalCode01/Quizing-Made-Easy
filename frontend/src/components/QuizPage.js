@@ -11,7 +11,7 @@ const QuizPage = () => {
   useEffect(() => {
     const fetchQuiz = async () => {
       try {
-        const { data } = await axios.get(`api/quizzes/${id}`);
+        const { data } = await axios.get(`/api/quizzes/${id}`);
         setQuiz(data);
       } catch (error) {
         console.error('Error fetching quiz:', error);
