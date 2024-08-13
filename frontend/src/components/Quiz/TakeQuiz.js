@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
+import Navbar from '../Home/Navbar';
 
 const TakeQuiz = () => {
   const [quizzes, setQuizzes] = useState([]);
@@ -10,7 +10,7 @@ const TakeQuiz = () => {
     const fetchQuizzes = async () => {
       try {
         const { data } = await axios.get('/api/quizzes');
-        console.log(data);
+        // console.log(data);
         setQuizzes(data);
       } catch (error) {
         console.error('Error fetching quizzes:', error);

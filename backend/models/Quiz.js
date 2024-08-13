@@ -8,6 +8,8 @@ const quizSchema = new mongoose.Schema({
             options: [{ text: String, isCorrect: Boolean }],
         },
     ],
+    creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    createdAt: { type: Date, default: Date.now },
 });
 
 const Quiz = mongoose.model('Quiz', quizSchema);
