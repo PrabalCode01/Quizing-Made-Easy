@@ -1,22 +1,12 @@
 import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import LoginModal from '../Auth/LoginModal';
-import LogoutButton from '../Auth/Logout';
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [user, setUser] = useState(null);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  useEffect(() => {
-    // Check for user data in local storage on component mount
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -26,14 +16,7 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
-  const handleLogout = () => {
-    setUser(null);
-    setIsDropdownOpen(false); // Close the dropdown after logging out
-  };
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
 
   return (
     <>
@@ -56,37 +39,13 @@ const Navbar = () => {
             <Link to="/create" className="hover:underline">Create a Quiz</Link>
             <Link to="/quiz" className="hover:underline">Take a Quiz</Link>
             <Link to="/result" className="hover:underline">Results</Link>
-            {user ? (
-              <div className="relative">
-                <div 
-                  onClick={toggleDropdown} 
-                  className="flex items-center space-x-2 cursor-pointer"
-                >
-                  <img src={user.picture} alt="Profile" className="w-8 h-8 rounded-full" />
-                  <span>{user.name}</span>
-                </div>
-                {isDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10">
-                    <LogoutButton onLogout={handleLogout} />
-                  </div>
-                )}
-              </div>
-            ) : (
-              <button onClick={() => setIsModalOpen(true)}>
-                Login
-              </button>
-            )}
           </div>
         </div>
       </nav>
 
       <Sidebar isOpen={isOpen} onClose={closeSidebar} />
 
-      <LoginModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        setUser={setUser} 
-      />
+     
     </>
   );
 };

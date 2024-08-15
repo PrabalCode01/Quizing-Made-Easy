@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import Navbar from '../Home/Navbar';
 
 const QuizPage = () => {
   const { id } = useParams();
@@ -34,9 +35,10 @@ const QuizPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gray-100">
+      <Navbar/>
       {quiz ? (
-        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-6 mt-10 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold text-center text-blue-600 mb-6">{quiz.title}</h1>
           {quiz.questions.map((question, qIndex) => (
             <div key={qIndex} className="mb-6">

@@ -5,7 +5,6 @@ import TakeQuiz from './components/Quiz/TakeQuiz';
 import QuizResult from './components/Quiz/QuizResult';
 import Home from './components/Home/Home';
 import QuizPage from './components/Quiz/QuizPage';
-import Auth from './components/Auth/Auth'
 
 
 
@@ -19,7 +18,6 @@ const App = () => {
         <Route path="/quiz" element={<TakeQuiz/>} />
         <Route path="/take-quiz/:id" element={<QuizPage />} />
         <Route path="/result" element={<QuizResult/>} />
-        <Route path="/login" element={<Auth/>} />
       </Routes>
     </BrowserRouter>
   );
