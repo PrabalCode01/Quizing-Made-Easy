@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 // const path = require("path");
 
 const quizRoutes = require('./routes/quizRoutes');
+const authRoutes = require('./routes/authRoutes')
 
 dotenv.config();
 
@@ -21,7 +22,7 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch(err => console.log(err));
 
 app.use('/api/quizzes', quizRoutes);
-
+app.use('/api/auth', authRoutes);
 
 // app.get("/", (req, res) => {
 //     app.use(express.static(path.resolve(__dirname, "frontend", "build")));
