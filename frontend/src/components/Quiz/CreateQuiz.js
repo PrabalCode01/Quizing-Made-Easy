@@ -42,14 +42,12 @@ const CreateQuiz = () => {
     } else if (selectedOption.text.trim() === '') {
       newErrors.questions[qIndex] = "Option text can't be empty.";
     } else {
-      // Uncheck all options
       newQuestions[qIndex].options.forEach((option, index) => {
         if (index !== oIndex) {
           option.isCorrect = false;
         }
       });
 
-      // Toggle the selected option
       newQuestions[qIndex].options[oIndex].isCorrect = !newQuestions[qIndex].options[oIndex].isCorrect;
 
       newErrors.questions[qIndex] = '';
@@ -178,22 +176,24 @@ const CreateQuiz = () => {
                       />
                       <span className="text-sm">Correct</span>
                     </label>
-                    <button
-                      type="button"
-                      onClick={() => handleDeleteOption(qIndex, oIndex)}
-                      className="text-red-600 hover:text-red-800"
-                    >
-                      ✖
-                    </button>
                   </div>
                 ))}
-                <button
-                  type="button"
-                  onClick={() => handleAddOption(qIndex)}
-                  className="text-blue-600 hover:text-blue-800 text-sm"
-                >
-                  + Add Option
-                </button>
+                <div className="flex space-x-4">
+                  <button
+                    type="button"
+                    onClick={() => handleAddOption(qIndex)}
+                    className="text-blue-600 hover:text-blue-800 text-sm"
+                  >
+                    + Add Option
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteOption(qIndex, questions[qIndex].options.length - 1)}
+                    className="text-red-600 hover:text-red-800 text-sm"
+                  >
+                    - Remove Option
+                  </button>
+                </div>
               </div>
             </div>
           ))}

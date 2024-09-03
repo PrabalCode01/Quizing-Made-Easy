@@ -83,7 +83,12 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <Sidebar isOpen={isOpen} onClose={closeSidebar} />
+      <Sidebar 
+       isOpen={isOpen} 
+       onClose={closeSidebar} 
+       isAuthenticated={auth.isAuthenticated} 
+       handleLogout={handleLogout} 
+      />
     </>
   );
 };
