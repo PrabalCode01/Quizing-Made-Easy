@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import AuthForms from '../Auth/AuthForms';
@@ -14,6 +14,14 @@ const Navbar = () => {
     if (token) {
       // Optionally verify token and set username
       setAuth({ isAuthenticated: true, username: 'User' });
+
+      // Set a timer to log out the user after 30 minutes (1800000 ms)
+      const logoutTimer = setTimeout(() => {
+        handleLogout();
+      }, 10000000); // 30 minutes in milliseconds
+
+      // Clear the timer if the user logs out or unmounts
+      return () => clearTimeout(logoutTimer);
     }
   }, [setAuth]);
 
@@ -24,6 +32,7 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     setAuth({ isAuthenticated: false, username: '' });
+    clearTimeout(); // Clear any existing timers
   };
 
   return (
