@@ -3,3 +3,4 @@
 
 # Ignore environment files if any
 .env
+node_modules

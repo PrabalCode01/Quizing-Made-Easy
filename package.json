@@ -1,26 +1,26 @@
 {
-  "name": "aspirenex",
+  "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": { 
-  "start": "concurrently \"npm run server\" \"npm run client\"",
-  "server": "cd backend && npm start",
-  "client": "cd frontend && npm start",
-  "build": "cd frontend && npm run build"
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build -- prefix frontend",
+    "start": "nodemon backend/server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.2",
-    "concurrently": "^8.2.2",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.4",
-    "nodemon": "^3.1.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.24.0"
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

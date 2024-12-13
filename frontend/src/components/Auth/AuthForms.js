@@ -17,15 +17,15 @@ const AuthModal = ({ toggleModal }) => {
   
     try {
       if (isLogin) {
-        console.log('Logging in');
+        // console.log('Logging in');
         const res = await axios.post('/api/auth/login', { email, password });
-        console.log('Login successful', res.data);
+        // console.log('Login successful', res.data);
         localStorage.setItem('token', res.data.token);
         setAuth({ isAuthenticated: true, username: res.data.username });
       } else {
-        console.log('Registering user');
+        // console.log('Registering user');
         const res = await axios.post('/api/auth/register', { username, email, password });
-        console.log('Registration successful', res.data);
+        // console.log('Registration successful', res.data);
         setIsLogin(true);
       }
       toggleModal(); // Close the modal after success

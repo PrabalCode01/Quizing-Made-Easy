@@ -88,7 +88,7 @@ const CreateQuiz = () => {
       newQuestions[index].options.push({ text: '', isCorrect: false });
       newErrors.questions[index] = '';
     }
-
+    
     setQuestions(newQuestions);
     setErrors(newErrors);
   };
